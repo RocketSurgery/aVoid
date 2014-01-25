@@ -13,9 +13,9 @@ public class SimplePlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (Input.GetKey (KeyCode.RightArrow)) {
-			rigidbody2D.AddForce (Vector2.right * movementSpeed);
+			rigidbody.AddForce (Vector3.right * movementSpeed);
 		} else if (Input.GetKey (KeyCode.LeftArrow)) {
-			rigidbody2D.AddForce(Vector2.right * -1 * movementSpeed);
+			rigidbody.AddForce(Vector3.right * -1 * movementSpeed);
 		}
 	}
 }

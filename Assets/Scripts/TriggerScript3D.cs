@@ -7,7 +7,7 @@ public class TriggerScript3D : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		Debug.Log ("Trigger: " + collider.isTrigger);
+//		Debug.Log ("Trigger: " + collider.isTrigger);
 	}
 	
 	// Update is called once per frame

@@ -21,6 +21,9 @@ public class SimpleWorldGen : MonoBehaviour
 		Transform first = Instantiate (platform, new Vector3 (0, 0, 0), Quaternion.identity) as Transform;
 		platforms.Add (first);
 
+		Debug.Log (first.position);
+		Debug.Log (first.localScale);
+
 		UpdateWorld (first);
 	}
 	
@@ -33,28 +36,39 @@ public class SimpleWorldGen : MonoBehaviour
 			currentTile = null;
 		}
 	}
-
-	delegate bool matches(Transform plat);
+	
 	public void UpdateWorld (Transform originTile)
 	{
 
-		for (int x = -1 * maxPlatformDistance; x <= maxPlatformDistance; x++) {
-			for (int z = -1 * maxPlatformDistance; z <= maxPlatformDistance; z++) {
+		// xOffset and zOffset is the offset in TILES from the origin tile
+		// multiple by scale values to get world coordinates
+		for (int xOffset = -1 * maxPlatformDistance; xOffset <= maxPlatformDistance; xOffset++) {
+			for (int zOffset = -1 * maxPlatformDistance; zOffset <= maxPlatformDistance; zOffset++) {
 
-				Vector3 differenceVector = new Vector3 (x, 0, z);
+//				Debug.Log(originTile.position);
+//				Debug.Log("xOffset: " + xOffset);
+//				Debug.Log("yOffset: " + zOffset);
 
 				// valid coordinate ofset
-				if (Mathf.Abs (x) + Mathf.Abs (z) <= maxPlatformDistance) {
+				if (Mathf.Abs (xOffset) + Mathf.Abs (zOffset) <= maxPlatformDistance) {
+
+					Vector3 newPosition = new Vector3(xOffset, 0, zOffset);
+					newPosition *= 5f;
+					newPosition += originTile.position;
+					Debug.Log(newPosition);
 
 					bool alreadyExists = false;
 					foreach (Transform plat in platforms) {
-						if (plat.position == originTile.position + differenceVector) {
+						if (plat.position == newPosition) {
+							Debug.Log ("Tile already exists at position: " + (newPosition));
 							alreadyExists = true;
 							break;
 						}
 					}
-					if (!alreadyExists)
-							Instantiate (platform, originTile.position + differenceVector, Quaternion.identity);
+					if (!alreadyExists) {
+//						Debug.Log ("Creating tile at position: " + (newPosition));
+						Instantiate (platform, newPosition, Quaternion.identity);
+					}
 				}
 			}
 		}

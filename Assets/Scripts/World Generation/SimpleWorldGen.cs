@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class SimpleWorldGen : MonoBehaviour
+public class SimpleWorldGen : MonoBehaviour
 {
 
 	// Public Settings
@@ -10,7 +10,6 @@ public abstract class SimpleWorldGen : MonoBehaviour
 	public static bool triggerWorldUpdate = false;
 	public static Transform currentTile = null;
 	public Transform platform;
-	public Transform player;
 	private ArrayList platforms = new ArrayList ();
 	
 	// Use this for initialization
@@ -22,23 +21,27 @@ public abstract class SimpleWorldGen : MonoBehaviour
 		platforms.Add (first);
 
 		Debug.Log (first.position);
-		Debug.Log (first.localScale);
 
-		UpdateWorld (first);
+		currentTile = first;
+		UpdateWorld();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		if (triggerWorldUpdate) {
-			UpdateWorld(currentTile);
+			UpdateWorld();
 			triggerWorldUpdate = false;
 			currentTile = null;
 		}
 	}
 	
-	public void UpdateWorld (Transform originTile)
+	void UpdateWorld ()
 	{
+
+		Debug.Log ("UpdateWorld() called");
+
+		Transform originTile = currentTile;
 
 		// xOffset and zOffset is the offset in TILES from the origin tile
 		// multiple by scale values to get world coordinates
@@ -69,6 +72,9 @@ public abstract class SimpleWorldGen : MonoBehaviour
 //						Debug.Log ("Creating tile at position: " + (newPosition));
 						Instantiate (platform, newPosition, Quaternion.identity);
 					}
+
+					Debug.Log ("UpdateWorld() yielding");
+//					yield return null;
 				}
 			}
 		}

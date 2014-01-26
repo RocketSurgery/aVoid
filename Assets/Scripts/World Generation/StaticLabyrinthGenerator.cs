@@ -77,8 +77,8 @@ public abstract class StaticLabyrinthGenerator : MonoBehaviour
 
 		// begin world generation by create a tile at the origin
 		Debug.Log ("intitial world generation started");
-		Transform first = Instantiate (platform, new Vector3 (0, 0, 0), Quaternion.identity) as Transform;
-		UpdateWorld (first);
+//		Transform first = Instantiate (platform, new Vector3 (0, 0, 0), Quaternion.identity) as Transform;
+//		UpdateWorld (first);
 	}
 	
 	// Update is called once per frame
@@ -108,16 +108,16 @@ public abstract class StaticLabyrinthGenerator : MonoBehaviour
 					Debug.Log (newPosition);
 					
 					bool alreadyExists = false;
-					foreach (Transform plat in tiles) {
-						if (plat.position == newPosition) {
-							Debug.Log ("Tile already exists at position: " + (newPosition));
-							alreadyExists = true;
-							break;
-						}
-					}
-					if (!alreadyExists) {
-						Instantiate (platform, newPosition, Quaternion.identity);
-					}
+//					foreach (Transform plat in tiles) {
+//						if (plat.position == newPosition) {
+//							Debug.Log ("Tile already exists at position: " + (newPosition));
+//							alreadyExists = true;
+//							break;
+//						}
+//					}
+//					if (!alreadyExists) {
+//						Instantiate (platform, newPosition, Quaternion.identity);
+//					}
 				}
 			}
 		}

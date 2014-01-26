@@ -5,6 +5,7 @@ public class StartMenu : MonoBehaviour {
 	
 	public GameObject startMenu;
 	public GameObject startPlane;
+	public Light directionalLight;
 	
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,7 @@ public class StartMenu : MonoBehaviour {
 		if (Time.time > 1 && Input.anyKey) {
 			Destroy(startMenu);
 			Destroy(startPlane);
+			Destroy(directionalLight);
 		}
 	}
 }

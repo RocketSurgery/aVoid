@@ -1186,6 +1186,7 @@ GameObject:
   - 114: {fileID: 929343502}
   - 82: {fileID: 929343503}
   - 114: {fileID: 929343504}
+  - 114: {fileID: 929343505}
   m_Layer: 0
   m_Name: First Person Controller
   m_TagString: Untagged
@@ -1411,6 +1412,20 @@ MonoBehaviour:
   - {fileID: 1837484416}
   - {fileID: 1391427155}
   - {fileID: 1975000564}
+--- !u!114 &929343505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929343496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01285b098ede814ba40926284401292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstCheckPoint: 10
+  finalCheckPoint: 200
+  finalTorqueMagnitude: 2
 --- !u!1 &1102884778
 GameObject:
   m_ObjectHideFlags: 0
@@ -2824,7 +2839,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1862488143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -7.2899704, z: 0}
+  m_LocalPosition: {x: 0, y: -12.0391617, z: 0}
   m_LocalScale: {x: 5, y: 77.2872543, z: 5}
   m_Children: []
   m_Father: {fileID: 1136037370}

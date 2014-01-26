@@ -22,7 +22,5 @@ public class FirstBeaconEffects : MonoBehaviour {
 		scalar = 1 / Vector3.Distance(transform.position, mainCharacter.transform.position);
 		pointLight.intensity = intensityStart * scalar;
 		transform.localScale = new Vector3(radius * scalar * .5f, height, radius * scalar * .5f);
-		
-
 	}
 }

@@ -6939,7 +6939,6 @@ GameObject:
   - 114: {fileID: 929343500}
   - 114: {fileID: 929343499}
   - 114: {fileID: 929343498}
-  - 114: {fileID: 929343502}
   - 114: {fileID: 929343509}
   - 82: {fileID: 929343503}
   - 114: {fileID: 929343504}
@@ -7073,29 +7072,6 @@ CharacterController:
   m_SkinWidth: .0500000007
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &929343502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 929343496}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5f1f9aa99e7cd44583062168627b2d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  footStepSounds:
-  - {fileID: 8300000, guid: e106650ea30de2846b4b8e44e0abd41c, type: 3}
-  - {fileID: 8300000, guid: 99bbc64f97fe2c54b8e245140fd99018, type: 3}
-  - {fileID: 8300000, guid: 757b62c54bd85774a8c9490a70e8450b, type: 3}
-  - {fileID: 8300000, guid: ed2561f894d38b246b857b50977e6c9b, type: 3}
-  - {fileID: 8300000, guid: 2eaaccbf81fd31a45832afb8d2e1709e, type: 3}
-  - {fileID: 8300000, guid: 69338530aee87c54ca3a913abd3ee76e, type: 3}
-  - {fileID: 8300000, guid: feba81f1189519f428e2ea22df8f6d62, type: 3}
-  - {fileID: 8300000, guid: 94bdd6f900238f341b9474fcfebc516d, type: 3}
-  stepLengthwalk: .300000012
-  stepLengthrun: .300000012
-  stepLengthcrouch: .300000012
 --- !u!82 &929343503
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7240,7 +7216,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 929343496}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bc5bddc24e1bbd4c855c107c883245c, type: 3}
   m_Name: 

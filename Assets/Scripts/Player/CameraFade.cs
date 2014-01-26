@@ -48,6 +48,10 @@ public class CameraFade : MonoBehaviour
 					m_CurrentScreenOverlayColor = m_TargetScreenOverlayColor;
 					SetScreenOverlayColor(m_CurrentScreenOverlayColor);
 					m_DeltaColor = new Color(0,0,0,0);
+					
+					
+					Application.LoadLevel("theVoid");
+					
 				}
 				else
 				{

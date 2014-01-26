@@ -213,10 +213,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 287151902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c5ab18048391474089af4c9027a880b, type: 3}
+  m_Script: {fileID: 11500000, guid: 516254e16a017ee419e9732ef99e299e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlatformDistance: 4
+  maxPlatformDistance: 5
   straightTile: {fileID: 400008, guid: 6cc1cb468ae777d45bc311a609e7ad8d, type: 2}
   cornerTile: {fileID: 400010, guid: 3f82ba6a91c5090449e198e6023c1910, type: 2}
   splitTile: {fileID: 400010, guid: 1dbcf2fcd37626346b7ec883e91119b6, type: 2}
@@ -306,7 +306,7 @@ Transform:
   m_PrefabInternal: {fileID: 1684300299}
   m_GameObject: {fileID: 1405060957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 7.82559395, z: 4.5}
+  m_LocalPosition: {x: 4.5, y: 1, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 860154148}
@@ -428,7 +428,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7.82559395
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.z

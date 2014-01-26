@@ -6,19 +6,12 @@ public class StaticLabyrinthGenerator : MonoBehaviour
 {
 
 	// compass for easy access to cardinal directions
-	public enum Compass
-	{
-		NORTH,	// positive Z axis
-		SOUTH,	// negative Z axis
-		EAST,	// positive X axis
-		WEST	// negative X axis
-	}
 
 	// maximum distance from current origin to generate new platforms
 	// distance is in manhattan distance
-	[Range (1, 25)]
+	[Range (1, 10)]
 	public int
-		maxPlatformDistance = 10;
+		maxPlatformDistance = 3;
 
 	// references to tile prefabs
 	// must be set by dragging over the prefabs in the editor
@@ -47,26 +40,23 @@ public class StaticLabyrinthGenerator : MonoBehaviour
 		prefabs [(int)Tile.Type.DEAD] = deadTile;
 
 		// set up Q1
-		Q1.Insert (0, new List<Tile>());
+		Q1.Insert (0, new List<Tile> ());
 
 		// pick a random first tile
 		int firstType = Random.Range (0, (int)Tile.Type.NUM_TYPES);
 
-		Transform firstTransform = Instantiate (prefabs [(int) Tile.Type.CROSS], new Vector3 (4.5f, 0, 4.5f), Quaternion.identity) as Transform;
+		Transform firstTransform = Instantiate (prefabs [(int)Tile.Type.CORNER], new Vector3 (4.5f, 0f, 4.5f), Quaternion.Euler (new Vector3 (0f, 180f, 0f))) as Transform;
 		Tile first = new Tile ((Tile.Type)firstType, firstTransform);
 		Q1 [0].Insert (0, first);
-		Debug.Log ("first transform: " + firstTransform);
-		StartCoroutine("UpdateWorld", firstTransform);
+		StartCoroutine ("UpdateWorld", firstTransform);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		if (triggerWorldUpdate && currentTile != null) {
-			StopCoroutine("UpdateWorld");
-
-			Debug.Log("current tile: " + currentTile);
-			StartCoroutine("UpdateWorld", currentTile);
+			StopCoroutine ("UpdateWorld");
+			StartCoroutine ("UpdateWorld", currentTile);
 			triggerWorldUpdate = false;
 			currentTile = null;
 		}
@@ -87,80 +77,128 @@ public class StaticLabyrinthGenerator : MonoBehaviour
 					// create a vecor to represent the position of the new potential tile
 					// apply Tile.SCALE to it, and add it to originTile.position
 					Vector3 newPosition = new Vector3 (xOffset, 0, zOffset);
-					Debug.Log(newPosition);
 
 					newPosition *= Tile.SCALE;
-					Debug.Log(newPosition);
 
 					newPosition += originTile.position;
-					Debug.Log(newPosition);
-					Debug.Log(originTile.position);
 					newPosition.y = 0f;
 
-//					Debug.Log("new vector: " + newPosition);
-
-					// create temporary Tile object to get tile indices
-					int tileX = (int) ((newPosition.x > 0) ? (newPosition.x + 4.5) / 9 : (newPosition.x - 4.5) / 9);
-					int tileZ = (int) ((newPosition.z > 0) ? (newPosition.z + 4.5) / 9 : (newPosition.z - 4.5) / 9);
-
-					Debug.Log("new tile pos: " + tileX + ", " + tileZ);
+					// calculate tile indices
+					// tile indices start at 1 and go up, or at -1 and go down
+					// this is to keep strict adherance to the quadrant format
+					int tileX = (int)((newPosition.x > 0) ? (newPosition.x + 4.5) / 9 : (newPosition.x - 4.5) / 9);
+					int tileZ = (int)((newPosition.z > 0) ? (newPosition.z + 4.5) / 9 : (newPosition.z - 4.5) / 9);
 
 					// search appropriate quadrant to see if it already exists
 					// if not, pick a valid one tile option and instantiate it
-					switch (Tile.GetQuadrant(newPosition)) {
+					switch (Tile.GetQuadrant (newPosition)) {
 					case Tile.Quadrant.FIRST:
 
-						Debug.Log("new tile in first quadrant");
-
-						Debug.Log("x pre-count: " + Q1.Count);
-						// ensure that Q1 is large enough along x to hold tile
-						// expand it if it's too small
-						if (Q1.Count < tileX) {
-
-							// Q1 not wide enough to fit new tile
-							// expand Q1 along x to fit
-							for (int i = Q1.Count; i <= tileX; i++)
-								Q1.Insert(i, new List<Tile>());
-						}
-
-						Debug.Log("x count: " + Q1.Count);
-
-						// ensure that Q1 is large enough along x, z to hold tile
-						// expand it if it's too small
-						List<Tile> col = Q1[tileX - 1];
-						if (col.Count < tileZ) {
-
-							// Q1 not tall anough along x, z to fit new tile
-							// expand Q1 along x, z to fit
-							for (int i = col.Count; i < tileZ; i++)
-								col.Insert(i, null);
-						}
-
-						Debug.Log("z count: " + col.Count);
-
-						// at this point, it's garunteed that there is a space for
-						// the new tile in the quadrant
 						// test for null, if null, add instantiate new item
-						if (Q1[tileX - 1][tileZ - 1] == null) {
-
-							Debug.Log("creating tile at: " + newPosition);
-
-							Transform newTrans = Instantiate(prefabs[(int) Tile.Type.CROSS], newPosition, Quaternion.identity) as Transform;
-							Tile newTile = new Tile(Tile.Type.CROSS, newTrans);
-							Q1[tileX - 1][tileZ - 1] = newTile;
+						if (getFromQuadrant (Q1, tileX, tileZ) == null) {
+							createTile (tileX, tileZ, newPosition);
 						}
 
 						break;
-					case Tile.Quadrant.INVALID :
-						throw new UnityException(); // this should never happen. like, ever.
+
+					case Tile.Quadrant.INVALID:
+						throw new UnityException (); // this should never happen. like, ever.
 					}
 
-					// check to see if tiles have been generated out that far
-
 					// yield coroutine
+					// magic efficiency code
 					yield return null;
 				}
 			}
 		}
+	}
+
+	void createTile (int tileX, int tileZ, Vector3 newPosition)
+	{
+
+//		Debug.Log ("Creating tile at: " + tileX + ", " + tileZ);
+
+		// get number of tiles adjacent to new tile that open onto new tile
+		// get each of the adjacent tiles
+		Tile.Path[] openings = new Tile.Path[4];
+
+		// NORTH OPENING
+		Tile north = getFromQuadrant (Q1, tileX, tileZ + 1);
+		if (north != null)
+			openings [(int)Tile.Compass.NORTH] = north.opening (Tile.Compass.SOUTH);
+		else
+			openings [(int)Tile.Compass.NORTH] = Tile.Path.EMPTY;
+
+		// EAST OPENING
+		Tile east = getFromQuadrant (Q1, tileX + 1, tileZ);
+		if (east != null)
+			openings [(int)Tile.Compass.EAST] = east.opening (Tile.Compass.WEST);
+		else
+			openings [(int)Tile.Compass.EAST] = Tile.Path.EMPTY;
+
+		// SOUTH OPENING
+		Tile south = getFromQuadrant (Q1, tileX, tileZ - 1);
+		if (south != null)
+			openings [(int)Tile.Compass.SOUTH] = south.opening (Tile.Compass.NORTH);
+		else
+			openings [(int)Tile.Compass.SOUTH] = Tile.Path.EMPTY;
+
+		// WEST OPENING
+		Tile west = getFromQuadrant (Q1, tileX - 1, tileZ);
+		if (west != null)
+			openings [(int)Tile.Compass.WEST] = west.opening (Tile.Compass.EAST);
+		else
+			openings [(int)Tile.Compass.WEST] = Tile.Path.EMPTY;
+
+		// use Tile.RandomValidType() to get a random type
+		// for the new tile
+		int newType = (int)Tile.RandomValidType (openings);
+
+		// check against invalid tile position (surrounded by walls)
+		if ((Tile.Type)newType == Tile.Type.INVALID)
+			return;
+
+		Vector3 orientation = Tile.CorrectOrientation ((Tile.Type)newType, openings);
+
+		Transform newTrans = Instantiate (prefabs [newType], newPosition, Quaternion.Euler(orientation)) as Transform;
+		Tile newTile = new Tile (Tile.Type.CROSS, newTrans);
+		Q1 [tileX - 1] [tileZ - 1] = newTile;
+	}
+
+	// a safety method for getting tiles from a quadrant
+	// returns null if the list isn't large enough
+	// in either direction to have the requested tile
+	// paremeters are indices relative to quarant, so they have an index of 1
+	// method will expand the lists if the lists aren't big enough
+	private Tile getFromQuadrant (List<List<Tile>> Q, int x, int z)
+	{
+
+//		Debug.Log ("GFQ: " + x + ", " + z);
+
+		if (x == 0 || z == 0)
+			return null;
+
+		// ensure that Q1 is large enough along x to hold tile and one further
+		// expand it if it's too small
+		if (Q1.Count < x) {
+			
+			// Q1 not wide enough to fit new tile
+			// expand Q1 along x to fit
+			for (int i = Q1.Count; Q1.Count < x; i++)
+				Q1.Insert (i, new List<Tile> ());
+		}
+		
+		// ensure that Q1 is large enough along z to hold tile and one further
+		// expand it if it's too small
+		List<Tile> col = Q1 [x - 1];
+		if (col.Count < z) {
+			
+			// Q1 not tall anough along z to fit new tile
+			// expand Q1 along z to fit
+			for (int i = col.Count; col.Count < z; i++)
+				col.Insert (i, null);
+		}
+
+		return Q1 [x - 1] [z - 1];
 	}
 }

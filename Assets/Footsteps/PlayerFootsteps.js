@@ -24,7 +24,7 @@ function PlayFootStepSounds()
 		else if (controller.isGrounded && controller.velocity.magnitude > 1)
 		{
 			audio.clip = footStepSounds[Random.Range(0, footStepSounds.length)];
-			audio.Play();
+			audio.PCharacterControllerlay();
 			yield WaitForSeconds(stepLengthwalk);
 		}
 		else if (controller.isGrounded && controller.velocity.magnitude > 1)

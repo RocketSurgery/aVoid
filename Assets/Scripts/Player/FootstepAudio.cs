@@ -18,11 +18,12 @@ public class FootstepAudio : MonoBehaviour
 		CharacterController controller = GetComponent<CharacterController> ();
 
 		while (true) {
-			if (controller.isGrounded) {
+			if (controller.isGrounded && controller.velocity.magnitude > 0) {
 				audio.clip = footStepSounds [Random.Range (0, footStepSounds.Count)];
 				audio.Play ();
-			}
-			yield return new WaitForSeconds (controller.velocity.magnitude * soundDelayScalar);
+				yield return new WaitForSeconds (controller.velocity.magnitude * soundDelayScalar);
+			} else
+				yield return null;
 		}
 	}
 }

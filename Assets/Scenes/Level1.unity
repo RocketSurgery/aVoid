@@ -6945,6 +6945,7 @@ GameObject:
   - 114: {fileID: 929343505}
   - 114: {fileID: 929343507}
   - 114: {fileID: 929343506}
+  - 114: {fileID: 929343508}
   m_Layer: 0
   m_Name: First Person Controller
   m_TagString: Untagged
@@ -7221,6 +7222,27 @@ MonoBehaviour:
   startMenu: {fileID: 1363102344}
   startPlane: {fileID: 1934236478}
   directionalLight: {fileID: 250372443}
+--- !u!114 &929343508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929343496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc5bddc24e1bbd4c855c107c883245c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footStepSounds:
+  - {fileID: 8300000, guid: e106650ea30de2846b4b8e44e0abd41c, type: 3}
+  - {fileID: 8300000, guid: 99bbc64f97fe2c54b8e245140fd99018, type: 3}
+  - {fileID: 8300000, guid: 757b62c54bd85774a8c9490a70e8450b, type: 3}
+  - {fileID: 8300000, guid: ed2561f894d38b246b857b50977e6c9b, type: 3}
+  - {fileID: 8300000, guid: 2eaaccbf81fd31a45832afb8d2e1709e, type: 3}
+  - {fileID: 8300000, guid: 69338530aee87c54ca3a913abd3ee76e, type: 3}
+  - {fileID: 8300000, guid: feba81f1189519f428e2ea22df8f6d62, type: 3}
+  - {fileID: 8300000, guid: 94bdd6f900238f341b9474fcfebc516d, type: 3}
+  soundDelayScalar: .200000003
 --- !u!1001 &956537353
 Prefab:
   m_ObjectHideFlags: 0
@@ -11725,6 +11747,7 @@ GameObject:
   - 65: {fileID: 1598125431}
   - 114: {fileID: 1598125430}
   - 114: {fileID: 1598125432}
+  - 114: {fileID: 1598125433}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -11780,6 +11803,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaf2a29ad90b75438ebb8056a25e49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1598125433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 8e1554ddb58c4a548a3c312ddec05b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1666555169}
+  m_GameObject: {fileID: 1598125428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2aa4457c52eaf84a8fd62646b88e868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generator: {fileID: 0}
 --- !u!1 &1607652345
 GameObject:
   m_ObjectHideFlags: 0
@@ -11844,7 +11880,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1614856357}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -11886,7 +11922,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1614856357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.470314, y: 0, z: 1.18186665}
+  m_LocalPosition: {x: -19.470314, y: -.00999999978, z: 1.18186665}
   m_LocalScale: {x: 198.483673, y: 198.483673, z: 198.483673}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11985,6 +12021,7 @@ GameObject:
   - 65: {fileID: 1680459788}
   - 114: {fileID: 1680459787}
   - 114: {fileID: 1680459789}
+  - 114: {fileID: 1680459790}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -12040,6 +12077,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aaf2a29ad90b75438ebb8056a25e49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1680459790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 8e1554ddb58c4a548a3c312ddec05b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 2059813241}
+  m_GameObject: {fileID: 1680459785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2aa4457c52eaf84a8fd62646b88e868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generator: {fileID: 0}
 --- !u!1 &1681382960
 GameObject:
   m_ObjectHideFlags: 0

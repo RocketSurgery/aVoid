@@ -11,7 +11,7 @@ public class CameraFade : MonoBehaviour
 	private GUIStyle m_BackgroundStyle = new GUIStyle();		// Style for background tiling
 	private Texture2D m_FadeTexture;				// 1x1 pixel texture used for fading
 	private Color m_CurrentScreenOverlayColor = new Color(0,0,0,0);	// default starting color: black and fully transparrent
-	private Color startingColor = new Color(0,0,0,.7f);	
+	private Color startingColor = new Color(0,0,0,.3f);	
 	private Color m_TargetScreenOverlayColor = new Color(0,0,0,1);	// default target color: black and fully transparrent
 	private Color m_DeltaColor = new Color(0,0,0,.1f);		// the delta-color is basically the "speed / second" at which the current color should change
 	private int m_FadeGUIDepth = -1000;				// make sure this texture is drawn on top of everything
@@ -64,14 +64,8 @@ public class CameraFade : MonoBehaviour
 	            		GUI.Label(new Rect(-10, -10, Screen.width + 10, Screen.height + 10), m_FadeTexture, m_BackgroundStyle);
 			}
 					
-		} else {
-			if (Vector3.Dot(mainCharacter.transform.forward, new Vector3(-1,0,0)) > 0) {
-				SetScreenOverlayColor(startingColor);
-			}	else {
-				SetScreenOverlayColor(new Color(0,0,0,0));
-			}
+		} 
 			
-		}
     }
  
  

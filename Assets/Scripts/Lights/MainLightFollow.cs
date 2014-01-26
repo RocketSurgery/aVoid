@@ -11,7 +11,7 @@ public class MainLightFollow : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		transform.position = new Vector3 (mainCharacter.transform.position.x, mainCharacter.transform.position.y + verticalOffset, mainCharacter.transform.position.z + horizontalOffset);
+		transform.position = new Vector3 (mainCharacter.transform.position.x  - horizontalOffset, mainCharacter.transform.position.y + verticalOffset, mainCharacter.transform.position.z);
 	}
 	
 	// Update is called once per frame
@@ -19,7 +19,7 @@ public class MainLightFollow : MonoBehaviour
 	{
 		
 		if (Mathf.Abs (mainCharacter.transform.position.x - transform.position.x) < Mathf.Abs (horizontalOffset)) {
-			transform.position = new Vector3 (mainCharacter.transform.position.x, mainCharacter.transform.position.y + verticalOffset, mainCharacter.transform.position.z + horizontalOffset);
+			transform.position = new Vector3 (mainCharacter.transform.position.x  - horizontalOffset, mainCharacter.transform.position.y + verticalOffset, mainCharacter.transform.position.z);
 			//transform.position = mainCharacter.transform.position + new Vector3(beaconXOffset, beaconYOffset, 0);
 		}
 	}

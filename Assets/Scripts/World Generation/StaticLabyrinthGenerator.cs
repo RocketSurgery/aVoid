@@ -16,7 +16,7 @@ public class StaticLabyrinthGenerator : MonoBehaviour
 	// references to tile prefabs
 	// must be set by dragging over the prefabs in the editor
 	public Transform straightTile, cornerTile, splitTile, crossTile, deadTile;
-	private Transform[] prefabs = new Transform[(int)Tile.Type.NUM_TYPES];
+	private Transform[] prefabs = new Transform[(int)Tile.Shape.NUM_TYPES];
 
 	// public static variables to allow trigger scripts to communicate with world generation script
 	// probably thread safe. Probably.
@@ -33,20 +33,20 @@ public class StaticLabyrinthGenerator : MonoBehaviour
 	{
 
 		// place tile prefabs in an array for easy access
-		prefabs [(int)Tile.Type.STRAIGHT] = straightTile;
-		prefabs [(int)Tile.Type.CROSS] = crossTile;
-		prefabs [(int)Tile.Type.CORNER] = cornerTile;
-		prefabs [(int)Tile.Type.SPLIT] = splitTile;
-		prefabs [(int)Tile.Type.DEAD] = deadTile;
+		prefabs [(int)Tile.Shape.STRAIGHT] = straightTile;
+		prefabs [(int)Tile.Shape.CROSS] = crossTile;
+		prefabs [(int)Tile.Shape.CORNER] = cornerTile;
+		prefabs [(int)Tile.Shape.SPLIT] = splitTile;
+		prefabs [(int)Tile.Shape.DEAD] = deadTile;
 
 		// set up Q1
 		Q1.Insert (0, new List<Tile> ());
 
 		// pick a random first tile
-		int firstType = Random.Range (0, (int)Tile.Type.NUM_TYPES);
+		int firstType = Random.Range (0, (int)Tile.Shape.NUM_TYPES);
 
-		Transform firstTransform = Instantiate (prefabs [(int)Tile.Type.CORNER], new Vector3 (4.5f, 0f, 4.5f), Quaternion.Euler (new Vector3 (0f, 180f, 0f))) as Transform;
-		Tile first = new Tile ((Tile.Type)firstType, firstTransform);
+		Transform firstTransform = Instantiate (prefabs [(int)Tile.Shape.CORNER], new Vector3 (4.5f, 0f, 4.5f), Quaternion.Euler (new Vector3 (0f, 180f, 0f))) as Transform;
+		Tile first = new Tile ((Tile.Shape)firstType, firstTransform);
 		Q1 [0].Insert (0, first);
 		StartCoroutine ("UpdateWorld", firstTransform);
 	}
@@ -116,7 +116,7 @@ public class StaticLabyrinthGenerator : MonoBehaviour
 	void createTile (int tileX, int tileZ, Vector3 newPosition)
 	{
 
-//		Debug.Log ("Creating tile at: " + tileX + ", " + tileZ);
+		// Debug.Log ("Creating tile at: " + tileX + ", " + tileZ);
 
 		// get number of tiles adjacent to new tile that open onto new tile
 		// get each of the adjacent tiles
@@ -155,13 +155,13 @@ public class StaticLabyrinthGenerator : MonoBehaviour
 		int newType = (int)Tile.RandomValidType (openings);
 
 		// check against invalid tile position (surrounded by walls)
-		if ((Tile.Type)newType == Tile.Type.INVALID)
+		if ((Tile.Shape)newType == Tile.Shape.INVALID)
 			return;
 
-		Vector3 orientation = Tile.CorrectOrientation ((Tile.Type)newType, openings);
+		Vector3 orientation = Tile.CorrectOrientation ((Tile.Shape)newType, openings);
 
 		Transform newTrans = Instantiate (prefabs [newType], newPosition, Quaternion.Euler(orientation)) as Transform;
-		Tile newTile = new Tile (Tile.Type.CROSS, newTrans);
+		Tile newTile = new Tile (Tile.Shape.CROSS, newTrans);
 		Q1 [tileX - 1] [tileZ - 1] = newTile;
 	}
 
@@ -173,7 +173,7 @@ public class StaticLabyrinthGenerator : MonoBehaviour
 	private Tile getFromQuadrant (List<List<Tile>> Q, int x, int z)
 	{
 
-//		Debug.Log ("GFQ: " + x + ", " + z);
+		// Debug.Log ("GFQ: " + x + ", " + z);
 
 		if (x == 0 || z == 0)
 			return null;

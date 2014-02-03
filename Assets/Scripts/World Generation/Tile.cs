@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Tile
 {
@@ -9,7 +10,7 @@ public class Tile
 	public const float SCALE = 9f;
 
 	// public enum for representing the types of tile
-	public enum Type : int
+	public enum Shape : int
 	{
 		STRAIGHT,
 		CORNER,
@@ -48,30 +49,55 @@ public class Tile
 
 	// the coordinates in TILES, rather than relative to world coordinates
 	// values can never be 0, must be >= 1 or <= -1
-//	public int tileX, tileZ;
-	public Type tileType;
+	//	public int tileX, tileZ;
+	public Shape type;
 
 	// a Transform object representing the position of the tile
 	private Transform transform;
+	private Compass orientation;
 
-	public Tile (Type t, Transform trans)
+	public Tile (Shape t, Transform trans)
 	{
-//		tileX = (int) ((loc.position.x > 0) ? (loc.position.x + 4.5) / 9 : (loc.position.x - 4.5) / 9);
-//		tileZ = (int) ((loc.position.z > 0) ? (loc.position.z + 4.5) / 9 : (loc.position.z - 4.5) / 9);
-		tileType = t;
+		type = t;
 		transform = trans;
 
-//		Debug.Log ("Tile pos: " + tileX + ", " + tileZ);
+		// reduce euler angle to integral value and convert to Compass type
+		orientation = (Compass)(Mathf.Round (transform.eulerAngles.y / 90f) % 4);
+
+		// Debug.Log ("Tile pos: " + tileX + ", " + tileZ);
 	}
-	
-	// returns and array of booleans with 4 elements in it
-	// each elements represents a cardinal direction,
-	// true means that the tile opens up to that direction,
-	// false means that the tile is closed to that direction
+
+	// returns whether the direction of the tile is an opening or a wall
 	public Path opening (Compass direction)
 	{
-		// TODO write Tile.openeings()
-		
+
+		// CROSS TILE
+		if (type == Shape.CROSS)
+			return Path.OPEN;
+
+		// DEAD END TILE
+		// if orientations match, path is open
+		// otherwise path is wall
+		if (type == Shape.DEAD)
+			return (orientation == direction) ? Path.OPEN : Path.WALL;
+
+		// STRAIGHT TILE
+		if (type == Shape.STRAIGHT) {
+
+			// straight tiles can only have a dir of
+			// SOUTH or WEST
+			// reorient search direction to match orientation of 
+			if (direction == Compass.EAST)
+				direction = Compass.WEST;
+			else if (direction == Compass.NORTH)
+				direction = Compass.SOUTH;
+
+			
+			// if orientations match, path is open
+			// otherwise path is wall
+			return (direction == orientation) ? Path.OPEN : Path.WALL;
+		}
+
 		return Path.OPEN;
 	}
 
@@ -96,7 +122,7 @@ public class Tile
 		return Quadrant.INVALID;
 	}
 
-	public static Type RandomValidType (Path[] openings)
+	public static Shape RandomValidType (Path[] openings)
 	{
 		int numWalls = 0;
 		foreach (Path o in openings)
@@ -114,41 +140,47 @@ public class Tile
 
 		// all walls
 		if (numWalls == 4)
-			return Type.INVALID;
+			return Shape.INVALID;
 
 		// all openings
 		if (numOpenings == 4)
-			return Type.CROSS;
+			return Shape.CROSS;
 
 		// no walls or openings
 		if ((numOpenings == 0 || numOpenings == 1) && numWalls == 0)
-			return (Type)Random.Range (0, (int)Type.NUM_TYPES);
+			return (Shape)Random.Range (0, (int)Shape.NUM_TYPES);
 
 		// 3 openings 1 wall
 		if (numOpenings == 3 && numWalls == 1)
-			return Type.SPLIT;
+			return Shape.SPLIT;
 
 		// 2 openings 2 walls
 		if (numOpenings == 2 && numWalls == 2) {
 
-			// if openings are opposite
+			// if openings are opposite then 
 			if ((openings [(int)Compass.NORTH] == Path.OPEN && openings [(int)Compass.SOUTH] == Path.OPEN) || (openings [(int)Compass.EAST] == Path.OPEN && openings [(int)Compass.WEST] == Path.OPEN))
-				return Type.STRAIGHT;
+				return Shape.STRAIGHT;
 			else 
-				return Type.CORNER;
+				return Shape.CORNER;
 		}
 
 		// 1 opening 3 walls
 		if (numWalls == 3)
-			return Type.DEAD;
+			return Shape.DEAD;
 
 		// ALL THE REST
+		// 0 WALLS, 2 OPENINGS
+		List<Shape> potentialShapes = new List<Shape> ();
+		if (numWalls == 0 && numOpenings == 2) {
+			potentialShapes.Add(Shape.CROSS);
+		}
+
 
 		// if all else fails, return a cross
-		return Type.CROSS;
+		return Shape.CROSS;
 	}
-
-	public static Vector3 CorrectOrientation (Type type, Path[] openings)
+	
+	public static Vector3 CorrectOrientation (Shape type, Path[] openings)
 	{
 
 		int numWalls = 0;
@@ -162,11 +194,11 @@ public class Tile
 				numOpenings++;
 
 		// CROSS TILES
-		if (type == Type.CROSS)
+		if (type == Shape.CROSS)
 			return new Vector3 (0, 0, 0);
 
-		// DEAD TILES
-		if (type == Type.DEAD) {
+		// DEAD END TILES
+		if (type == Shape.DEAD) {
 
 			// exactly 1 opening
 			// must connect with opening
@@ -186,7 +218,7 @@ public class Tile
 		}
 
 		// STRAIGHT TILES
-		if (type == Type.STRAIGHT) {
+		if (type == Shape.STRAIGHT) {
 
 			// if 2 openings, determine which orientation
 			if (numOpenings == 2)
@@ -208,7 +240,7 @@ public class Tile
 		}
 
 		// SPLIT TILES
-		if (type == Type.SPLIT) {
+		if (type == Shape.SPLIT) {
 
 			// if 1 wall, face away from the wall
 			// splits orient towards their middle opening
@@ -228,7 +260,7 @@ public class Tile
 		}
 
 		// CORNER TILES
-		if (type == Type.CORNER) {
+		if (type == Shape.CORNER) {
 
 			// 2 openings, orient so that the corner is between them
 			// corner defaults to being between SOUTH and WEST
@@ -254,4 +286,6 @@ public class Tile
 		// catchall return
 		return new Vector3 (0, 0, 0);
 	}
+
+
 }

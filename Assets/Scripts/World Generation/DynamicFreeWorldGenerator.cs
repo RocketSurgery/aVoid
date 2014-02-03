@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -43,7 +43,7 @@ public class DynamicFreeWorldGenerator : MonoBehaviour
 	// references to tile prefabs
 	// must be set by dragging over the prefabs in the editor
 	public Transform straightTile, cornerTile, splitTile, crossTile, deadTile;
-	private Transform[] prefabs = new Transform[(int)Tile.Type.NUM_TYPES];
+	private Transform[] prefabs = new Transform[(int)Tile.Shape.NUM_TYPES];
 	
 	// public static variables to allow trigger scripts to communicate with world generation script
 	// probably thread safe. Probably.
@@ -55,14 +55,14 @@ public class DynamicFreeWorldGenerator : MonoBehaviour
 	{
 		
 		// place tile prefabs in an array for easy access
-		prefabs [(int)Tile.Type.STRAIGHT] = straightTile;
-		prefabs [(int)Tile.Type.CROSS] = crossTile;
-		prefabs [(int)Tile.Type.CORNER] = cornerTile;
-		prefabs [(int)Tile.Type.SPLIT] = splitTile;
-		prefabs [(int)Tile.Type.DEAD] = deadTile;
+		prefabs [(int)Tile.Shape.STRAIGHT] = straightTile;
+		prefabs [(int)Tile.Shape.CROSS] = crossTile;
+		prefabs [(int)Tile.Shape.CORNER] = cornerTile;
+		prefabs [(int)Tile.Shape.SPLIT] = splitTile;
+		prefabs [(int)Tile.Shape.DEAD] = deadTile;
 		
 		// pick a random first tile
-		DynamicFreeWorldGenerator_Trigger firstTrigger = Instantiate (prefabs [(int)Tile.Type.CROSS], new Vector3 (4.5f, 0, 4.5f), Quaternion.identity) as DynamicFreeWorldGenerator_Trigger;
+		DynamicFreeWorldGenerator_Trigger firstTrigger = Instantiate (prefabs [(int)Tile.Shape.CROSS], new Vector3 (4.5f, 0, 4.5f), Quaternion.identity) as DynamicFreeWorldGenerator_Trigger;
 
 		// assign generator reference
 		firstTrigger.generator = this;

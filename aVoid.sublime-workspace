@@ -1,0 +1,481 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"star",
+				"startTime"
+			],
+			[
+				"lo",
+				"Log"
+			],
+			[
+				"num",
+				"num_iterations"
+			],
+			[
+				"aver",
+				"average_time"
+			],
+			[
+				"Unity",
+				"UnityException"
+			],
+			[
+				"Inval",
+				"INVALID"
+			],
+			[
+				"Open",
+				"OPENING"
+			],
+			[
+				"Sou",
+				"SOUTH"
+			],
+			[
+				"tile",
+				"tileZ"
+			],
+			[
+				"E",
+				"EMPTY"
+			],
+			[
+				"or",
+				"orientation"
+			],
+			[
+				"cor",
+				"CORNER"
+			],
+			[
+				"pat",
+				"Path"
+			],
+			[
+				"spl",
+				"SPLIT"
+			],
+			[
+				"stra",
+				"STRAIGHT"
+			],
+			[
+				"valid",
+				"validOrientations"
+			],
+			[
+				"wall",
+				"WALL"
+			],
+			[
+				"add",
+				"Add"
+			],
+			[
+				"val",
+				"validOrientations"
+			],
+			[
+				"is",
+				"isValid"
+			],
+			[
+				"po",
+				"potentialShapes"
+			],
+			[
+				"Ran",
+				"Range"
+			],
+			[
+				"Wall",
+				"WALL"
+			],
+			[
+				"Cor",
+				"CORNER"
+			],
+			[
+				"str",
+				"STRAIGHT"
+			],
+			[
+				"op",
+				"OPEN"
+			],
+			[
+				"No",
+				"NORTH"
+			],
+			[
+				"open",
+				"openings"
+			],
+			[
+				"Spl",
+				"SPLIT"
+			],
+			[
+				"ad",
+				"Add"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Assets/Scripts/World Generation/StaticLabyrinthGenerator.cs",
+			"settings":
+			{
+				"buffer_size": 10608,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/World Generation/Tile.cs",
+			"settings":
+			{
+				"buffer_size": 10667,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/UnityBuild/Unity.sublime-build",
+	"command_palette":
+	{
+		"height": 127.0,
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"branch",
+				"Git: New Branch"
+			],
+			[
+				"git",
+				"Git: Change Branch"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 407.0,
+		"history":
+		[
+			"chcp",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/gocode/src/github.com/quarnster/parser/PegRules.make",
+		"/C/gocode/src/github.com/quarnster/completion/build/Makefile",
+		"/C/gocode/src/github.com/quarnster/completion/build/C/bin/pegparser",
+		"/C/gocode/src/github.com/quarnster/parser/pegparser/main.go",
+		"/C/Users/excaliburhissheath/Documents/aVoid/.gitignore",
+		"/C/Users/excaliburhissheath/Documents/aVoid/aVoid.sublime-project",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/UnityBuild/aVoid.sublime-project",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/UnityBuild/Unity.sublime-build",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assets/Scripts/World Generation/aVoid.sublime-project",
+		"/C/Users/excaliburhissheath/Documents/aVoid/Assets/Standard Assets/Character Controllers/Sources/Scripts/CharacterMotor.js",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assets/Scripts/World Generation/Tile.cs",
+		"/C/Users/excaliburhissheath/Documents/aVoid/Assets/Scripts/World Generation/SimpleWorldGen.cs",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/GGJ2014.sublime-project",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/.gitignore",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assembly-CSharp-firstpass-vs.csproj",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assembly-CSharp-firstpass.csproj",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assembly-CSharp-vs.csproj",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assembly-CSharp.csproj",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assembly-UnityScript-firstpass-vs.unityproj",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assets/Scenes/Final.unity",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assets/Scenes/Labyrinth Generator.unity.meta",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assets/Scripts/World Generation/TileAlignmentReset.cs",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assets/Scripts/World Generation/TileAlignmentAnchor.cs",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/User/UnityC#.sublime-settings",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Installed Packages/Unity3D Build System.sublime-package",
+		"/C/Users/excaliburhissheath/Documents/UnityBuild/README.md",
+		"/C/Users/excaliburhissheath/Documents/UnityBuild/Unity.sublime-build",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/Unity3D Build System/Unity.sublime-build",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/Sublime-MonoDevelop/MonoDevelop.sublime-build",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/Unity3D Build System/SublimeLogger-Source/LoggerImpl.cs",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/Unity3D Build System/SublimeLogger-Source/SublimeLogger.csproj",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/Unity3D Build System/SublimeLogger.dll",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/Unity3D Build System/SublimeLogger-Source/Properties/AssemblyInfo.cs",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/Unity3D Build System/README.md",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assets/Scripts/World Generation/DynamicFreeWorldGenerator.cs",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/GGJ4014.sublime-project",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assets/Scripts/World Generation/StaticLabyrinthGenerator.cs",
+		"/C/Users/excaliburhissheath/Documents/GGJ2014/Assets/Scripts/World Generation/TriggerScript3D.cs",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/C/Users/excaliburhissheath/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"OPEN",
+			"newType",
+			"type",
+			"OPEN",
+			"newType",
+			"WALL",
+			"Q1",
+			"Q",
+			"EMPTY",
+			"orientation",
+			"\n    ",
+			"DEAD",
+			"openings",
+			"OPEN",
+			"SOUTH",
+			"NORTH",
+			"SOUTH",
+			"WALL",
+			"NORTH",
+			"head",
+			"{",
+			"{\n",
+			"encoding",
+			"potentialTypes"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/Scripts/World Generation/StaticLabyrinthGenerator.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								404,
+								404
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/World Generation/Tile.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10667,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2958,
+								2958
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 336.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 248.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"project": "aVoid.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\excaliburhissheath\\Documents\\GGJ2014\\GGJ2014.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 247.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

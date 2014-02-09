@@ -180,8 +180,6 @@ function Awake () {
 	tr = transform;
 }
 
-var slowdownPercent : float = .1f;
-
 private function UpdateFunction () {
 	// We copy the actual velocity into a temporary variable that we can manipulate.
 	var velocity : Vector3 = movement.velocity;
@@ -191,12 +189,6 @@ private function UpdateFunction () {
 	
 	// Apply gravity and jumping force
 	velocity = ApplyGravityAndJumping (velocity);
-	
-	if (Vector3.Dot(transform.forward, new Vector3(-1,0,0)) < 0) {
-		
-		velocity *= (1 - Mathf.Abs(Vector3.Dot(transform.forward, new Vector3(-1,0,0)))) * slowdownPercent + (1-slowdownPercent);
-			
-	}
 	
 	// Moving platform support
 	var moveDistance : Vector3 = Vector3.zero;

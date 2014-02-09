@@ -1,0 +1,25 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "Assets\\Scripts"
+		}
+	],
+
+	"settings":
+    {
+        "AStyleFormatter":
+        {
+            "options_default":
+            {
+                // egyptian braces for ALL the things
+                "style": "java"
+            },
+        }
+    }
+}

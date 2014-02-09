@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5ab18048391474089af4c9027a880b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlatformDistance: 5
+  maxPlatformDistance: 3
   straightTile: {fileID: 400008, guid: 6cc1cb468ae777d45bc311a609e7ad8d, type: 2}
   cornerTile: {fileID: 400010, guid: 3f82ba6a91c5090449e198e6023c1910, type: 2}
   splitTile: {fileID: 400010, guid: 1dbcf2fcd37626346b7ec883e91119b6, type: 2}
